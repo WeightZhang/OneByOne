@@ -2,49 +2,37 @@
 layout: default
 ---
 
-<!-- Post Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<div id="post" class="container">
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	<div class="postthumb"><img src="/thumbnails/{{ page.thumbnail }}" /></div>
 
-				{{ content }}
+	<h1>{{ page.title }}</h1>
 
-                <hr>
+	<div class="meta clearfix">
+		<strong>Author:</strong> {{ page.author }}
 
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-                    </li>
-                    {% endif %}
-                </ul>
+		{% if page.license %}
+			<br /><strong>License:</strong> {{ page.license }}
+		{% endif %}
 
-            </div>
-        </div>
-    </div>
-</article>
+		<br /><br />
+		{% if page.homepage %}
+			<a class="btn" href="{{ page.homepage }}"><i class="icon-home"></i> Homepage</a>
+		{% endif %}
+		{% if page.download %}
+			<a class="btn" href="{{ page.download }}"><i class="icon-download-alt"></i> Download</a>
+		{% endif %}
+		{% if page.demo %}
+			<a class="btn" href="{{ page.demo }}"><i class="icon-road"></i> Demo</a>
+		{% endif %}
+		{% if page.license_link %}
+			<a class="btn" href="{{ page.license_link }}"><i class="icon-file"></i> License</a>
+		{% endif %}
+	</div>
 
-<hr>
+
+	<div class="post-content">
+	{{ content }}
+	</div>
+
+</div>
