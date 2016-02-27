@@ -1,23 +1,51 @@
-# Site settings
-title: 'LMY-HOME'  # Your Title
-tagline: '柔弱、无欲，顺乎自然，但却具有强大的生命力'  # A brief tagline for your site
-sidebar_image: /images/cover.jpg
+# Site wide configuration
 
-encoding: UTF-8
-markdown: kramdown
+title:
+description:
+logo: # 120x120 px default image used for Twitter summary card
+teaser: # 400x250 px default teaser image used in image archive grid
+locale: en
+url:
 
-paginate: 8
-paginate_path: "page:num"
+# Jekyll configuration
 
-#pygments: true
-baseurl: ""
+sass:
+  sass_dir: _sass
+  style: compressed
+permalink: /:categories/:title/
+kramdown:
+  toc_levels: 1..2
+highlighter: rouge
+gems:
+  - jekyll-sitemap
+  - jekyll-gist
 
 
-# Site settings
-name:           limingyang2012
-email:          limingyang2012@zju.edu.cn
-uri:            limingyang2012.github.io
-github:         limingyang2012
-twitter:        limingyang2012
-facebook:       limingyang2012
-linkedin:       limingyang2012
+# Octopress configuration
+
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: article
+page_layout: article
+
+# Format titles with titlecase?
+titlecase: true
+
+
+# Site owner
+owner:
+  name:
+  email:
+  twitter:
+  google:
+    ad-client:
+    ad-slot:
+  bio:
+  avatar: bio-photo.jpg # 160x160 px image for author byline
+  disqus-shortname:
+
+
+exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
