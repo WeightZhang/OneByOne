@@ -1,38 +1,40 @@
 ---
-layout: default
+layout: page
 ---
 
-<div id="post" class="container">
-
-	<div class="postthumb"><img src="/thumbnails/{{ page.thumbnail }}" /></div>
-
-	<h1>{{ page.title }}</h1>
-
-	<div class="meta clearfix">
-		<strong>Author:</strong> {{ page.author }}
-
-		{% if page.license %}
-			<br /><strong>License:</strong> {{ page.license }}
-		{% endif %}
-
-		<br /><br />
-		{% if page.homepage %}
-			<a class="btn" href="{{ page.homepage }}"><i class="icon-home"></i> Homepage</a>
-		{% endif %}
-		{% if page.download %}
-			<a class="btn" href="{{ page.download }}"><i class="icon-download-alt"></i> Download</a>
-		{% endif %}
-		{% if page.demo %}
-			<a class="btn" href="{{ page.demo }}"><i class="icon-road"></i> Demo</a>
-		{% endif %}
-		{% if page.license_link %}
-			<a class="btn" href="{{ page.license_link }}"><i class="icon-file"></i> License</a>
-		{% endif %}
-	</div>
-
-
-	<div class="post-content">
-	{{ content }}
-	</div>
-
+<div class="post-content">
+    <div class="title"><h1>{{ page.title }}</h1></div>
+    <p class="post-date">{{ page.date | date: "%b %-d, %Y" }}</p>
+                    
+     {{ content }}
+                    
+    <ul class="pagination">
+        {% if page.previous.url %}
+        <li class="previous">
+            <a href="{{ site.baseurl }}{{ page.previous.url }}">Previous</a>
+        </li>
+        {% endif %}
+        {% if page.next.url %}
+         <li class="next">
+            <a href="{{ site.baseurl }}{{ page.next.url }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
 </div>
+
+            
+
+<div class="catalog-menu">
+    <h3>目&nbsp;&nbsp;录</h3>
+    <div class="catalog-menu-content"></div>
+</div>
+
+
+<div class="comment">
+    <span>Comments</span>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="limingyang2012.github.io{{ page.url }}"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
