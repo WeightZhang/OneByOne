@@ -9,12 +9,12 @@ image:
 
 <div class="tile">
   <h2 class="post-title">首页</h2>
-  <p class="post-excerpt">Takes advantage of native Sass support and data files to make customizing your site easier.</p>
+  <p class="post-excerpt">0000000</p>
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-title">第一页</h2>
-  <p class="post-excerpt">Designed to put the focus on you and your writing. Headers, navigation, sidebars, and footers have been purposely deemphasized.</p>
+  <p class="post-excerpt">1111111.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
