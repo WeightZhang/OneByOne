@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>LMY-HOME</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//libs.cncdn.cn/highlight.js/8.4/styles/tomorrow.min.css">
+    <script src="//libs.cncdn.cn/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- CSS -->                       
+    <link rel="stylesheet" href="/statics/css/index.css">
+</head>
+
+<body>
+    
+    <div class="wrap">          
+    <!--HEADER-->
+<div class="header">
+    <div class="logo"> <a href="/index.html"><img src="/images/logo.png" alt=""></a> </div>
+    <div class="cssmenu">
+        <ul>
+            <li><a href="/index.html">HOME</a></li>       
+            <li><a href="/blog/">BLOG</a></li>
+            <li><a href="/demo/">DEMO</a></li>
+            <li><a href="/about/">ABOUT</a></li>
+            <li><a href="http://limingyang2012.github.io/cv/">RESUME</a></li>
+        </ul>
+    </div>
+    <div class="top-nav">
+        <nav class="clearfix">
+            <ul>
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="/blog/">BLOG</a></li>
+                <li><a href="/demo/">DEMO</a></li>
+                <li><a href="/about/">ABOUT</a></li>
+                <li><a href="http://limingyang2012.github.io/cv/">RESUME</a></li>
+            </ul>
+        <a href="#" id="pull">MENU</a> 
+        </nav>
+    </div>
+</div>    
+        <div id="container">
+    <div class="content">
+        <div class="page">
+            <div class="post-content">
+    <div class="title"><h1>nth-child与nth-of-type用法区别</h1></div>
+    <p class="post-date">Dec 24, 2015</p>
+                    
+     <p>nth-child与nth-of-type用法区别总结</p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#first-child" id="markdown-toc-first-child">first-child方法</a></li>
+  <li><a href="#nth-child" id="markdown-toc-nth-child">nth-child方法</a></li>
+  <li><a href="#nth-of-type" id="markdown-toc-nth-of-type">nth-of-type方法</a></li>
+  <li><a href="#section" id="markdown-toc-section">参考文献：</a></li>
+</ul>
+
+<h3 id="first-child">first-child方法</h3>
+
+<p>first-child顾名思义第一个子元素的意思，但是如果你这样想就不对啦。看看下面的结果</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>div:first-child{
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt; //I'am red
+  &lt;p&gt;css&lt;/p&gt;  //I'am red too
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>字面意思上理解应该是div的第一个子元素也就是<code class="highlighter-rouge">html</code>会变红色，但结果却是两个都变红色了，那么有没有办法使<code class="highlighter-rouge">html</code>变红色，而<code class="highlighter-rouge">css</code>不变色呢。看下面的代码。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>div :first-child{  //注意div后面的空格
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt; //I'am red
+  &lt;p&gt;css&lt;/p&gt;  
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>然后看下面的代码</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:first-child{ 
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt; //I'am red
+  &lt;p&gt;css&lt;/p&gt;  
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>所以在使用<code class="highlighter-rouge">first-child</code>的时候也是需要细心的啊。</p>
+
+<blockquote>
+  <p>element:first-child的时候表示选择第一个element元素,切该元素的父元素的第一个元素和element类型一样，比如</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:first-child{ 
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;b&gt;html&lt;/b&gt; //I'am not red
+  &lt;p&gt;css&lt;/p&gt;  //I'am not red too
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>你会很好奇不是选择第一个p吗？那么<code class="highlighter-rouge">css</code>应该变成红色啊，但是实际情况并不是这样的。这就是我要说的，其父元素的第一个子元素并不是p所以该方法就失效了。</p>
+
+<blockquote>
+  <p>element :first-child（注意element后面的空格）的时候表示选择element的第一个子元素。</p>
+</blockquote>
+
+<h3 id="nth-child">nth-child方法</h3>
+
+<p>那么nth-child与fist-child方法不同之处在于他可以选择任意元素,例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-child(2){
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt;
+  &lt;p&gt;css&lt;/p&gt;  //I'am red
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<blockquote>
+  <p>element:nth-child(n)表示首先确定element标签的类型，其次其父节点的第n个子元素的标签要与elem标签的类型一样才有效。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-child(2){
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;b&gt;jquery&lt;/b&gt;
+  &lt;p&gt;html&lt;/p&gt;  //I'am red
+  &lt;p&gt;css&lt;/p&gt; 
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>但是如果是下面的形式就不会有效果</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-child(2){
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt;  
+  &lt;b&gt;jquery&lt;/b&gt;  //I'am not red
+  &lt;p&gt;css&lt;/p&gt; 
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>那么如果我想要div的第二个子元素变红怎么办呢。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>div :nth-child(2){  //注意div后面的空格
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt;  
+  &lt;b&gt;jquery&lt;/b&gt;  //I'am red
+  &lt;p&gt;css&lt;/p&gt; 
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>也可以这样</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b:nth-child(2){  
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt;  
+  &lt;b&gt;jquery&lt;/b&gt;  //I'am red
+  &lt;p&gt;css&lt;/p&gt; 
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>相信你应该理解差不多了。</p>
+
+<blockquote>
+  <p>element:nth-child(n)就是先找element元素，然后他如果是他父元素的第n个子元素就选中。</p>
+</blockquote>
+
+<blockquote>
+  <p>element :nth-child(n)就是先找element元素，然后找到他的第n个子元素，然后选中就好。</p>
+</blockquote>
+
+<h3 id="nth-of-type">nth-of-type方法</h3>
+
+<p>除了上面繁琐的方法还有一个稍微简单的方法</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-of-type(2){
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;p&gt;html&lt;/p&gt;
+  &lt;p&gt;css&lt;/p&gt;  //I'am red
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<blockquote>
+  <p>element:nth-of-type(n)就是先找element元素，然后第2个element标签被选中。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-of-type(2){
+  color:red;
+}
+
+&lt;div&gt;
+  &lt;b&gt;jquery&lt;/b&gt;
+  &lt;p&gt;html&lt;/p&gt;
+  &lt;p&gt;css&lt;/p&gt;  //I'am red
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>不用考虑其他元素的影响，如下所示</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>p:nth-of-type(2){
+  color:red;
+}
+
+&lt;div&gt;	
+  &lt;p&gt;html&lt;/p&gt;
+  &lt;b&gt;jquery&lt;/b&gt;
+  &lt;p&gt;css&lt;/p&gt;  //I'am red
+  &lt;p&gt;javascript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>应该学习差不多了。</p>
+
+<p>基本都转载自参考文献</p>
+
+<h3 id="section">参考文献：</h3>
+
+<p>1、<a href="http://www.w3ctrain.com/2015/09/04/the-difference-between-nth-child-and-nth-of-type/">:nth-child 和 :nth-of-type的区别</a></p>
+
+
+                    
+    <ul class="pagination">
+        
+        <li class="previous">
+            <a href="/javascript/2015/12/07/javascript-getStyle.html">Previous</a>
+        </li>
+        
+        
+         <li class="next">
+            <a href="/node/2015/12/27/gulp-start.html">Next</a>
+        </li>
+        
+    </ul>
+</div>
+
+            
+
+<div class="catalog-menu">
+    <h3>目&nbsp;&nbsp;录</h3>
+    <div class="catalog-menu-content"></div>
+</div>
+
+
+<div class="comment">
+    <span>Comments</span>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/htmlcss/2015/12/24/nth-child" data-title="nth-child与nth-of-type用法区别" data-url="limingyang2012.github.io/htmlcss/2015/12/24/nth-child.html"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                   
+        </div>       
+        
+    </div>
+</div>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"limingyang2012"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+    
+        <!--回到顶部-->
+        <a id="returnTop"></a>
+
+    <!-- FOOTER -->
+<div class="footer" >
+    <p class="copyright">
+       	&copy; 
+        <span itemprop="copyrightYear">2016</span> 
+        <span itemprop="name">&nbsp;limingyang2012</span>
+    </p>
+</div>
+    </div>
+
+    <script src="/statics/js/jquery.min.js"></script>
+    <script src="/statics/js/index.js"></script>
+    
+
+</body>
+</html>

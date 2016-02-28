@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>LMY-HOME</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//libs.cncdn.cn/highlight.js/8.4/styles/tomorrow.min.css">
+    <script src="//libs.cncdn.cn/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- CSS -->                       
+    <link rel="stylesheet" href="/statics/css/index.css">
+</head>
+
+<body>
+    
+    <div class="wrap">          
+    <!--HEADER-->
+<div class="header">
+    <div class="logo"> <a href="/index.html"><img src="/images/logo.png" alt=""></a> </div>
+    <div class="cssmenu">
+        <ul>
+            <li><a href="/index.html">HOME</a></li>       
+            <li><a href="/blog/">BLOG</a></li>
+            <li><a href="/demo/">DEMO</a></li>
+            <li><a href="/about/">ABOUT</a></li>
+            <li><a href="http://limingyang2012.github.io/cv/">RESUME</a></li>
+        </ul>
+    </div>
+    <div class="top-nav">
+        <nav class="clearfix">
+            <ul>
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="/blog/">BLOG</a></li>
+                <li><a href="/demo/">DEMO</a></li>
+                <li><a href="/about/">ABOUT</a></li>
+                <li><a href="http://limingyang2012.github.io/cv/">RESUME</a></li>
+            </ul>
+        <a href="#" id="pull">MENU</a> 
+        </nav>
+    </div>
+</div>    
+        <div id="container">
+    <div class="content">
+        <div class="page">
+            <div class="post-content">
+    <div class="title"><h1>清浮动的八种方法</h1></div>
+    <p class="post-date">Sep 15, 2015</p>
+                    
+     <p>清浮动的八种方法学习笔记</p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">基本概念</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">什么是浮动</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">浮动产生的原因</a>        <ul>
+          <li><a href="#section-3" id="markdown-toc-section-3">代码1：</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">清浮动方法</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">方法1:给父级元素加高</a>        <ul>
+          <li><a href="#section-6" id="markdown-toc-section-6">代码2：</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-7" id="markdown-toc-section-7">方法2:给父级加浮动</a>        <ul>
+          <li><a href="#section-8" id="markdown-toc-section-8">代码3：</a></li>
+        </ul>
+      </li>
+      <li><a href="#display-inline-block" id="markdown-toc-display-inline-block">方法3:父级添加display: inline-block</a>        <ul>
+          <li><a href="#section-9" id="markdown-toc-section-9">代码4：</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-10" id="markdown-toc-section-10">方法4:空标签清浮动</a>        <ul>
+          <li><a href="#section-11" id="markdown-toc-section-11">代码5：</a></li>
+        </ul>
+      </li>
+      <li><a href="#br-clearall" id="markdown-toc-br-clearall">方法5:加<br clear="all" /></a>        <ul>
+          <li><a href="#section-12" id="markdown-toc-section-12">代码6：</a></li>
+        </ul>
+      </li>
+      <li><a href="#clear" id="markdown-toc-clear">方法6:加上clear类</a>        <ul>
+          <li><a href="#section-13" id="markdown-toc-section-13">代码7：</a></li>
+        </ul>
+      </li>
+      <li><a href="#overflow-hidden" id="markdown-toc-overflow-hidden">方法7:overflow: hidden</a>        <ul>
+          <li><a href="#section-14" id="markdown-toc-section-14">代码8：</a></li>
+        </ul>
+      </li>
+      <li><a href="#position" id="markdown-toc-position">方法8:position</a>        <ul>
+          <li><a href="#section-15" id="markdown-toc-section-15">代码9：</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section">基本概念</h3>
+
+<h4 id="section-1">什么是浮动</h4>
+
+<p>元素加了浮动，会脱离文档流，按照指定的一个方向移动，直到碰到父级的边界或者另外一个浮动元素停止。</p>
+
+<h4 id="section-2">浮动产生的原因</h4>
+
+<p>一般一个盒子里使用了CSS float浮动属性，导致父级对象盒子不能被撑开，这样CSS float浮动就产生了。如下面代码1由于box内部子元素都设置了浮动，这样就造成了，父级元素不能被子元素撑开</p>
+
+<h5 id="section-3">代码1：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{width:600px;margin:0 auto; border:5px solid #000;}
+.left{width:300px;height:400px;background:#faa;float:left;}
+.right{width:300px;height:400px; background:#aaf;float:right;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="left"&gt;
+  &lt;/div&gt;
+  &lt;div class="right"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h3 id="section-4">清浮动方法</h3>
+
+<h4 id="section-5">方法1:给父级元素加高</h4>
+<p>给父级元素加高，如下代码2所示，给box加上了height:400px；确实可以清除浮动，但是此方法扩展性很差。</p>
+
+<h5 id="section-6">代码2：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{width:600px;margin:0 auto; border:5px solid #000; height:400px;}
+.left{width:300px;height:400px;background:#faa;float:left;}
+.right{width:300px;height:400px; background:#aaf;float:right;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="left"&gt;
+  &lt;/div&gt;
+  &lt;div class="right"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="section-7">方法2:给父级加浮动</h4>
+<p>给父级也加浮动，如下代码3所示，给box加上了 float:left;；确实可以清除浮动，但是此方法使margin左右失效了，不提倡此方法。</p>
+
+<h5 id="section-8">代码3：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{width:600px;margin:0 auto; border:5px solid #000; float:left;}
+.left{width:300px;height:400px;background:#faa;float:left;}
+.right{width:300px;height:400px; background:#aaf;float:right;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="left"&gt;
+  &lt;/div&gt;
+  &lt;div class="right"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="display-inline-block">方法3:父级添加display: inline-block</h4>
+<p>父级添加display: inline-block来清除浮动，如下代码4所示，给box加上了 display:inline-block;确实可以清除浮动，但是此方法使margin左右失效了，不提倡此方法。</p>
+
+<h5 id="section-9">代码4：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{width:600px;margin:0 auto; border:5px solid #000; display:inline-block}
+.left{width:300px;height:400px;background:#faa;float:left;}
+.right{width:300px;height:400px; background:#aaf;float:right;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="left"&gt;
+  &lt;/div&gt;
+  &lt;div class="right"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="section-10">方法4:空标签清浮动</h4>
+<p>在浮动元素下边加上&lt;div class=”clear”&gt;&lt;/div&gt;空标签清浮动，如下代码5所示,确实可以清除浮动，但是IE6最小高度19px；解决后IE6下还有2px偏差。</p>
+
+<h5 id="section-11">代码5：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{ width:300px;margin:0 auto;border:10px solid #000;}
+.div{ width:200px;height:200px;background:red;float:left;}
+.clear{ height:0px;font-size:0;clear:both;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="div"&gt;&lt;/div&gt;
+  &lt;div class="clear"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="br-clearall">方法5:加<br clear="all" /></h4>
+<p>在浮动元素下加<code class="highlighter-rouge">&lt;br clear="all"/&gt;</code>，如下代码6所示。确实可以清浮动，但是不符合W3C标准，样式混入了html</p>
+
+<h5 id="section-12">代码6：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{ width:300px;margin:0 auto;border:10px solid #000;}
+.div{ width:200px;height:200px;background:red;float:left;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="div"&gt;&lt;/div&gt;
+  &lt;br clear="all"/&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="clear">方法6:加上clear类</h4>
+<p>给浮动元素的父级元素加上clear类，然后给该元素的after伪类设置如下样式，如下代码7所示。IE6、7不支持after伪类，为了兼容IE6、7，还要给父级元素加上样式zoom:1，但是推荐此种方法</p>
+
+<h5 id="section-13">代码7：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{margin:0 auto;border:10px solid #000;}
+.div{ width:200px;height:200px;background:red;float:left;}
+.clear{zoom:1;}
+.clear:after{content:""; display:block;clear:both;}
+    
+html
+&lt;div class="box clear"&gt;
+  &lt;div class="div"&gt;  
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">注意</code>：在IE6、7下，浮动元素的父级有宽度的话，就不需要清浮动，本身就可以清浮动了。
+&gt;在IE中，子元素的宽高要么是跟着父级走的，要么是跟着内容走的。这个可以用haslayout来调节。但是haslayout不会自动控制。haslayout的默认值为false。但是用了特定样式的时候，haslayout会变成true。具体可以看这里百度百科的词条。
+&gt;当haslayout触发的时候，会根据元素内容大小或者父级的大小来重新计算元素的宽高。所以在IE6、7下，如果给浮动元素的父级加了宽高的话，那么触发了haslayout。该父级元素就根据其内容，及子元素来重新计算宽高，也就清除了浮动。如果父级元素没有加宽高的话，通过加zoom: 1;来触发haslayout，就可以解决问题了。也就是说，为了兼容IE6、7，除了给父级元素加上clear类，然后该给父级元素的after伪类添加上述样式之外，还要给该父级元素加上zoom: 1;的样式。</p>
+
+<h4 id="overflow-hidden">方法7:overflow: hidden</h4>
+<p>给浮动元素父级加overflow: hidden;或overflow: auto;来清除浮动，并且一定要配合zoom: 1使用。如下代码8所示。IE6下，overflow没有包住浮动子元素的功能，为了兼容，还是要加zoom: 1来解决一下</p>
+
+<h5 id="section-14">代码8：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{ width:300px;height:300px;border:10px solid #000;overflow:hidden;}
+.div1{ width:200px;height:400px;background:red;float:left;}
+
+html
+&lt;div class="box"&gt;
+  &lt;div class="div1"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<h4 id="position">方法8:position</h4>
+<p>给浮动元素的父级元素添加position:absolute或者position:fixed，都可以清除浮动。如下代码9所示。</p>
+
+<h5 id="section-15">代码9：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>css
+.box{ width:300px;border:10px solid #000;position:absolute;}
+.div1{ width:200px;height:400px;background:red;float:left;}
+    
+html
+&lt;div class="box"&gt;
+  &lt;div class="div1"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+
+
+                    
+    <ul class="pagination">
+        
+        <li class="previous">
+            <a href="/journal/2015/09/12/hello-my-first-blog.html">Previous</a>
+        </li>
+        
+        
+         <li class="next">
+            <a href="/javascript/2015/09/19/js-isArray.html">Next</a>
+        </li>
+        
+    </ul>
+</div>
+
+            
+
+<div class="catalog-menu">
+    <h3>目&nbsp;&nbsp;录</h3>
+    <div class="catalog-menu-content"></div>
+</div>
+
+
+<div class="comment">
+    <span>Comments</span>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/htmlcss/2015/09/15/clear-float" data-title="清浮动的八种方法" data-url="limingyang2012.github.io/htmlcss/2015/09/15/clear-float.html"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                   
+        </div>       
+        
+    </div>
+</div>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"limingyang2012"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+    
+        <!--回到顶部-->
+        <a id="returnTop"></a>
+
+    <!-- FOOTER -->
+<div class="footer" >
+    <p class="copyright">
+       	&copy; 
+        <span itemprop="copyrightYear">2016</span> 
+        <span itemprop="name">&nbsp;limingyang2012</span>
+    </p>
+</div>
+    </div>
+
+    <script src="/statics/js/jquery.min.js"></script>
+    <script src="/statics/js/index.js"></script>
+    
+
+</body>
+</html>
