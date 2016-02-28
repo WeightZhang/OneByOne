@@ -8,7 +8,7 @@ image:
 <div class="tiles">
 
 <div class="tile">
-  <h2 class="post-title">One</h2>
+  <h2 class="post-title">首页</h2>
   <p class="post-excerpt">0000000</p>
 </div><!-- /.tile -->
 
