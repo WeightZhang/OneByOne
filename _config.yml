@@ -1,53 +1,23 @@
-# Site wide configuration
+# Site settings
+title: 'LMY-HOME'  # Your Title
+tagline: '柔弱、无欲，顺乎自然，但却具有强大的生命力'  # A brief tagline for your site
+sidebar_image: /images/cover.jpg
 
-title: 独眼猫
-description: "A lightweight site starter for Jekyll"
-logo: 120x120.gif
-teaser: 400x250.gif
-locale: en_US
-url: //weightzhang.github.io/OneByOne
+encoding: UTF-8
+markdown: kramdown
 
-# Jekyll configuration
+paginate: 8
+paginate_path: "page:num"
 
-sass:
-  sass_dir: _sass
-  style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
-highlighter: rouge
-gems:
-  - jekyll-sitemap
-  - jekyll-gist
+#pygments: true
+baseurl: ""
 
 
-# Octopress configuration
-
-# Default extensions
-post_ext: md
-page_ext: md
-
-# Found in _templates/
-post_layout: article
-page_layout: article
-
-# Format titles with titlecase?
-titlecase: true
-
-
-# Site owner
-owner:
-  name: Weightzhang
-  web: http://www.taobao.com
-  email: michael@mademistakes.com
-  twitter: mmistakes
-  bio: "Just another boring, tattooed, time traveling designer."
-  avatar: bio-photo.jpg # 160x160 px image for author byline
-  google:
-    plus: +MichaelRoseDesign
-    ad-client: ca-pub-7328585512091257
-    ad-slot: 3049671934
-  disqus-shortname:
-
-
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+# Site settings
+name:           limingyang2012
+email:          limingyang2012@zju.edu.cn
+uri:            limingyang2012.github.io
+github:         limingyang2012
+twitter:        limingyang2012
+facebook:       limingyang2012
+linkedin:       limingyang2012
