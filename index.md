@@ -8,22 +8,22 @@ image:
 <div class="tiles">
 
 <div class="tile">
-  <h2 class="post-title">首页</h2>
+  <h2 class="post-title">One</h2>
   <p class="post-excerpt">0000000</p>
 </div><!-- /.tile -->
 
 <div class="tile">
-  <h2 class="post-title">第一页</h2>
+  <h2 class="post-title">Two</h2>
   <p class="post-excerpt">1111111.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
-  <h2 class="post-title">第二页</h2>
+  <h2 class="post-title">Three</h2>
   <p class="post-excerpt">Packed with layouts and modules. Include Disqus comments, social sharing buttons, and table of contents on one or all pages.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
-  <h2 class="post-title">第三页</h2>
+  <h2 class="post-title">Four</h2>
   <p class="post-excerpt">Compatible with popular libraries like <a href="http://bourbon.io">Bourbon</a>, <a href="http://neat.bourbon.io/">Neat</a>, and <a href="http://github.com/octopress/octopress">Octopress</a> to help build and deploy your site with ease.</p>
 </div><!-- /.tile -->
 
